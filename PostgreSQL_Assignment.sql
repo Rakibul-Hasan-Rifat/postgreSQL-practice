@@ -112,8 +112,8 @@ VALUES (
     ),
     (
         4,
-        1,
         2,
+        1,
         'Snowfall Pass',
         '2024-05-18 18:30:00',
         NULL
@@ -129,16 +129,7 @@ INSERT INTO
 VALUES ('Derek Fox', 'Coastal Plains');
 
 -- ______________________________ problem 2 ______________________________
-SELECT count(DISTINCT common_name) AS unique_species_count
-FROM species;
-
-SELECT count(*) as unique_species_count
-FROM (
-        SELECT count(*)
-        FROM species
-        GROUP BY
-            common_name
-    );
+SELECT count(DISTINCT species_id) AS unique_species_count FROM species JOIN sightings USING (species_id);
 
 -- ______________________________ problem 3 ______________________________
 SELECT * FROM sightings WHERE location ILIKE '%pass%';
